@@ -137,7 +137,7 @@
                     this.deleteTask(task.id);
                 } else {
                     axios.post('edit_task', task).then(result => {
-                        console.log('access!')
+                        console.log('success!')
                     }).catch(err => {
                         console.log(err);
                     });
