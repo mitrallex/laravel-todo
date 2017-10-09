@@ -19,14 +19,14 @@
                     <ul>
                         <li :class="{'is-active':isActive('current')}">
                             <h3 class="title">
-                                <a href="#" v-on:click.prevent="fetchTaskList()">
+                                <a href="#" @click.prevent="fetchTaskList()">
                                     Current task
                                 </a>
                             </h3>
                         </li>
                         <li :class="{'is-active':isActive('archive')}">
                             <h3 class="title">
-                                <a href="#" v-on:click.prevent="fetchTaskList(1)">
+                                <a href="#" @click.prevent="fetchTaskList(1)">
                                     Archived tasks
                                 </a>
                             </h3>
@@ -39,12 +39,12 @@
                             Task {{ task.id }}
                         </p>
                         <a href="#" class="card-header-icon" aria-label="more options"
-                            v-on:click.prevent="archiveTask(task.id)">
+                           @click.prevent="archiveTask(task.id)">
                             <span class="icon">
-                                <i class="fa " :class="{'fa-square-o': !task.archive,
-                                                        check: !task.archive,
-                                                        'fa-check-square-o': task.archive,
-                                                        done: task.archive}" aria-hidden="true"></i>
+                                <i class="fa " :class="{'fa-square-o': !isTaskArchived(task),
+                                                        check: isTaskArchived(task),
+                                                        'fa-check-square-o': isTaskArchived(task),
+                                                        done: isTaskArchived(task)}" aria-hidden="true"></i>
                             </span>
                         </a>
                     </header>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="card-footer-item" v-on:click.prevent="deleteTask(task.id)">Delete</a>
+                        <a class="card-footer-item" @click.prevent="deleteTask(task.id)">Delete</a>
                     </footer>
                 </div>
 
@@ -158,7 +158,14 @@
                 }).catch(err => {
                     console.log(err);
                 });
+            },
+            isTaskArchived(task){
+                return task.archive == 1;
             }
         }
+
     }
+
+
+
 </script>
