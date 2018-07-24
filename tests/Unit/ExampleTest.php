@@ -9,22 +9,12 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class ExampleTest extends TestCase
 {
     /**
-     * Check tasks list page
+     * ExampleTest
+     *
      * @return void
      */
-    public function testGetCurrentTasksList()
+    public function testExampleTest()
     {
-        $response = $this->call('GET', 'current_tasks');
-        $response->assertStatus(200);
-    }
-
-    /**
-     * Check tasks list page
-     * @return void
-     */
-    public function testGetArchivedTasksList()
-    {
-        $response = $this->call('GET', 'archived_tasks');
-        $response->assertStatus(200);
+        $this->assertTrue(true);
     }
 }

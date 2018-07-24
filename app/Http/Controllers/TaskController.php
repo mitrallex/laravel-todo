@@ -19,7 +19,6 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'body' => 'required|max:500'
         ]);
@@ -29,11 +28,9 @@ class TaskController extends Controller
 
     public function edit(Request $request)
     {
-        // dd($request);
         $this->validate($request, [
             'body' => 'required|max:500'
         ]);
-
         $task = Task::findOrFail($request->id);
         $task->body = $request->body;
         $task->save();
